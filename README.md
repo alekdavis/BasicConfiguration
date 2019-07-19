@@ -18,4 +18,4 @@ IMPORTANT: NEVER KEEP SENSITIVE APPLICATION SETTINGS, SUCH AS PASSWORDS, ENCRIPT
 This solution includes two projects:
 
 - [**BasicConfiguration**](../../tree/master/BasicConfiguration) is a [.NET Standard](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) class library that implements helper methods for initializing sensitive and non-sensitive application settings.
-- **SampleConsoleApp** implements a console app illustrating how to use the `BasicConfiguration` class library.
+- [**SampleConsoleApp**](../../tree/master/SampleConsoleApp) illustrates how to use the `BasicConfiguration` class library.
