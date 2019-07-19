@@ -12,5 +12,10 @@ Here is the basic idea:
 
 This project illustrates how this can be done. It also shows how you can handle sensitive application settings, such as passwords, encription keys, and so on.
 
-## Code
+IMPORTANT: NEVER KEEP SENSITIVE APPLICATION SETTINGS, SUCH AS PASSWORDS, ENCRIPTION KEYS, CONNECTION STRINGS, AND SO ON, HARD CODED IN THE APPLICATION SOURCE.
 
+## Solution
+This solution includes two projects:
+
+- **BasicConfiguration** is a [.NET Standard](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) class library that implements helper methods for initializing sensitive and non-sensitive application settings.
+- **SampleConsoleApp** illustrates how to use the BasicConfiguration class library.
