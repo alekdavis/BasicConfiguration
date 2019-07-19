@@ -1,4 +1,4 @@
-# BasicConfiguration
+# BasicAppSettings
 This .NET project illustrates how to keep your application configuration files nice and clean. It also suggests a better way to initialize sensitive and non-sensitive application settings.
 
 ## Introduction
@@ -17,10 +17,10 @@ IMPORTANT: NEVER KEEP SENSITIVE APPLICATION SETTINGS, SUCH AS PASSWORDS, ENCRIPT
 ## Code
 This solution includes two projects:
 
-- [**BasicConfiguration**](../../tree/master/BasicConfiguration) is a [.NET Standard](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) class library that implements a couple of helper methods for initializing sensitive and non-sensitive application settings.
-- [**SampleConsoleApp**](../../tree/master/SampleConsoleApp) illustrates how to use the `BasicConfiguration` class library.
+- [**BasicAppSettings**](../../tree/master/BasicAppSettings) is a [.NET Standard](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) class library that implements a couple of helper methods for initializing sensitive and non-sensitive application settings.
+- [**SampleConsoleApp**](../../tree/master/SampleConsoleApp) illustrates how to use the `BasicAppSettings` class library.
 
-### BasicConfiguration project
+### BasicAppSettings project
 This project implements the class library that exposes a single static class (`Config`) with just a couple of methods:
 
 - `GetValue` - returns either the configuration setting from the application configuration file or (if the setting is missing or unspecified) the default.
@@ -36,7 +36,7 @@ It makes sense to encapsulate initialization for the non-sensitive settings in a
 
 ```csharp
 using System;
-using BasicConfiguration;
+using BasicAppSettings;
 
 namespace Sample
 {
@@ -123,6 +123,11 @@ foreach (string name in names)
 ```
 
 ## Dependencies
-For some [bizarre reasons](https://github.com/dotnet/standard/issues/506), when using the `BasicConfiguration` class library, you need to explicitly reference the [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/) Nuget package from your project.
+For some [bizarre reasons](https://github.com/dotnet/standard/issues/506), when using the `BasicAppSettings` class library, you need to explicitly reference the [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/) Nuget package from your project.
 
+## Usage
+To include the `BasicAppSettings` class library in your project, add the following Nuget packages:
+
+- [BasicAppSettings](https://www.nuget.org/packages/BasicAppSettings)
+- [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/)
 

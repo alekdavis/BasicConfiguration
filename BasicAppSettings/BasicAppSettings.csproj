@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Alek Davis</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Implements easy methods for reading sensitive and non-sensitive application settings from configuration files.</Description>
+    <Copyright>© 2019 Alek Davis</Copyright>
+    <PackageLicenseUrl>https://github.com/alekdavis/BasicConfiguration/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/alekdavis/BasicConfiguration</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/alekdavis/BasicConfiguration.git</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>.NET, configuration, encrypt, decrypt, settings</PackageTags>
+    <Company>Alek Davis</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+    <PackageReference Include="System.Security.AccessControl" Version="4.5.0" />
+    <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
+    <PackageReference Include="System.Security.Principal.Windows" Version="4.5.1" />
+  </ItemGroup>
+
+</Project>

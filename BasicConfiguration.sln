@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicConfiguration", "BasicConfiguration\BasicConfiguration.csproj", "{0F2F7A75-E6C6-4137-9750-635C0F685221}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicAppSettings", "BasicAppSettings\BasicAppSettings.csproj", "{0F2F7A75-E6C6-4137-9750-635C0F685221}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleApp", "SampleConsoleApp\SampleConsoleApp.csproj", "{1DADDCEF-11F1-46C5-ADE0-FC7C3FF70F77}"
 EndProject

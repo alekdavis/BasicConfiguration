@@ -1,5 +1,5 @@
 ﻿using System;
-using BasicConfiguration;
+using BasicAppSettings;
 
 namespace Sample
 {

@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using System.Configuration;
 
-namespace BasicConfiguration
+namespace BasicAppSettings
 {
     /// <summary>
     /// Implements helper methods for reading sensitive and non-sensitive application settings from the configuration file.
