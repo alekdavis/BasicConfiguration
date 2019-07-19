@@ -118,7 +118,7 @@ string[] names = new string[] { "Secret1", "Secret2", "Secret3" };
 foreach (string name in names)
 {
     string value = Config.GetSecret<string>(name);
-    Console.WriteLine(String.Format("{0}   = {1}", name, value));
+    Console.WriteLine(String.Format("{0} = {1}", name, value));
 }
 ```
 
@@ -129,5 +129,5 @@ For some [bizarre reasons](https://github.com/dotnet/standard/issues/506), when 
 To include the `BasicAppSettings` class library in your project, add the following Nuget packages:
 
 - [BasicAppSettings](https://www.nuget.org/packages/BasicAppSettings)
-- [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/)
+- [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/) (in case, it is not pulled automatically)
 
