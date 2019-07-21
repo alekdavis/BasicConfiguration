@@ -95,9 +95,18 @@ Console.WriteLine(String.Format("{0}= {1}", "Enforce   ", AppConfig.Enforce));
 #### Sensitive application settings
 For managing sensitive application settings, the code relies on the standard [`aspnet_regiis.exe`](https://blogs.msdn.microsoft.com/gaurav/2013/12/15/encrypting-section-of-config-file-using-aspnet_regiis-exe-the-configuration-for-physical-path-web-config-cannot-be-opened/) tool. The sample project comes with the modified version of the [`Crypt.config.bat`](https://github.com/alekdavis/Crypt.config.bat) script that takes care of the minutiae needed for the key creation and encryption. When you build the project, the post step will invoke the `Crypt.config.bat` file to create a key container and then encrypt a sensitive configuration section of the application configuration file (notice that once the key container creation step successfully runs, it will keep failing because on repeated attempts it will try to create the container that already exists, so you can ignore this error). 
 
-In the sample, the sensitive settings are stored inside of the `secureAppSettings` section in the configuration file (one setting is stored in the `appSettings` section just to illustrate that you can do it for debugging purposes, but you should never keep sensitive settings unencrypted once the application is deployed): 
+In the sample, the sensitive settings are stored inside of the `secureAppSettings` section in the configuration file (one setting is stored in the `appSettings` section just to illustrate that you can do it for debugging purposes, but you should never keep sensitive settings unencrypted once the application is deployed). Here what they look like in plain text (once you build the project, the `secureAppSettings` section will be encrypted):
 
 ```xml
+<configSections>
+  <section name="secureAppSettings" type="System.Configuration.AppSettingsSection, System.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+</configSections>
+<configProtectedData defaultProvider="basicConfigurationSampleRsaProvider">
+  <providers>
+    <remove name="basicConfigurationSampleRsaProvider"/>
+    <add name="basicConfigurationSampleRsaProvider" type="System.Configuration.RsaProtectedConfigurationProvider, System.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" keyContainerName="intelMnaToolsRsaKey" useMachineContainer="true" />
+  </providers>
+</configProtectedData>
 <appSettings>
   ...
   <add key="Secret1" value="From the 'appSettings' section."/>
