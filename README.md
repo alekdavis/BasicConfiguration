@@ -104,7 +104,7 @@ In the sample, the sensitive settings are stored inside of the `secureAppSetting
 <configProtectedData defaultProvider="basicConfigurationSampleRsaProvider">
   <providers>
     <remove name="basicConfigurationSampleRsaProvider"/>
-    <add name="basicConfigurationSampleRsaProvider" type="System.Configuration.RsaProtectedConfigurationProvider, System.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" keyContainerName="intelMnaToolsRsaKey" useMachineContainer="true" />
+    <add name="basicConfigurationSampleRsaProvider" type="System.Configuration.RsaProtectedConfigurationProvider, System.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" keyContainerName="sampleRsaKey" useMachineContainer="true" />
   </providers>
 </configProtectedData>
 <appSettings>
