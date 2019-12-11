@@ -197,10 +197,10 @@ namespace BasicAppSettings
             return nameValuePairs
                     .Split(new string[] { elementSeparator }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(part  => part.Split(new string[] { nameValueSeparator }, StringSplitOptions.RemoveEmptyEntries))
-                    .Where(part => part.Length == 2)
+                    .Where(part => part.Length > 0)
                     .ToDictionary(
                         sp => (trimNames  ? sp[0].Trim() : sp[0]), 
-                        sp => (trimValues ? sp[1].Trim() : sp[1]));
+                        sp => (sp.Length > 1 ? (trimValues ? sp[1].Trim() : sp[1]) : ""));
 
         }
 
