@@ -24,6 +24,8 @@ This solution includes two projects:
 This project implements the class library that exposes a single static class (`Config`) with just a couple of methods:
 
 - `GetValue` - returns either the configuration setting from the application configuration file or (if the setting is missing or unspecified) the default.
+- `GetArray` - returns either the configuration setting from the application configuration file or (if the setting is missing or unspecified) the default converted to a string array.
+- `GetDictionary` - returns either the configuration setting from the application configuration file or (if the setting is missing or unspecified) the default converted to a string dictionary.
 - `GetSecret` - can be used to get a value from the configuration file's encrypted section (it first checks if there is an unencrypted value in the `appSettings` section).
 
 The library is built as a [.NET Standard](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) assembly, so you can use it from either .NET Core or traditional .NET apps. 
