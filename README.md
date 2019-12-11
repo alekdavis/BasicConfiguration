@@ -45,12 +45,6 @@ namespace Sample
     /// </summary>
     internal static class AppConfig
     {
-        internal static string Operations =
-            Config.GetValue<string>("Operations", "Create|Read|Update|Delete|Assign|Revoke|Enable|Disable");
-
-        internal static string Objects =
-            Config.GetValue<string>("Objects", "User|Group|Role");
-
         internal static char Code =
             Config.GetValue<char>("Code", 'C');
 
@@ -74,6 +68,18 @@ namespace Sample
 
         internal static DateTime LastDate =
             Config.GetValue<DateTime>("LastDate", DateTime.UtcNow);
+
+        internal static string[] Operations =
+            Config.GetArray("Operations", "Create|Read|Update|Delete|Assign|Revoke|Enable|Disable", true, "|");
+
+        internal static string[] Objects =
+            Config.GetArray("Objects", "User|Group|Role", true, "|");
+
+        internal static Dictionary<string, string> FirstPriority =
+            Config.GetDictionary("FirstPriority", "User=1;Group=2;Role=3");
+
+        internal static Dictionary<string, string> SecondPriority =
+            Config.GetDictionary("SecondPriority", "User=1;Group=2;Role=3");
     }
 }
 ```
@@ -81,8 +87,6 @@ namespace Sample
 To use a specific setting, the application can simply reference the corresponding static property of the `AppConfig` class:
 
 ```csharp
-Console.WriteLine(String.Format("{0}= {1}", "Operations", AppConfig.Operations));
-Console.WriteLine(String.Format("{0}= {1}", "Objects   ", AppConfig.Objects));
 Console.WriteLine(String.Format("{0}= {1}", "Code      ", AppConfig.Code));
 Console.WriteLine(String.Format("{0}= {1}", "Index     ", AppConfig.Index));
 Console.WriteLine(String.Format("{0}= {1}", "Max       ", AppConfig.Max));
@@ -92,6 +96,43 @@ Console.WriteLine(String.Format("{0}= {1}", "LastDate  ", AppConfig.LastDate));
 Console.WriteLine(String.Format("{0}= {1}", "Enabled   ", AppConfig.Enabled));
 Console.WriteLine(String.Format("{0}= {1}", "Enforce   ", AppConfig.Enforce));
 ```
+
+This is how you convert an app setting to a string array:
+
+```csharp
+string[] operations = AppConfig.Operations;
+Console.WriteLine(String.Format("\nOperations:"));
+foreach (string operation in operations)
+{
+    Console.WriteLine(operation);
+}
+```
+
+And this is how you convert an app setting to a string dictionary:
+
+```csharp
+Dictionary<string, string> priority1 = AppConfig.FirstPriority;
+Console.WriteLine(String.Format("\nFirst Priority:"));
+foreach (string key in priority1.Keys)
+{
+    Console.WriteLine(String.Format("{0,-5} = {1}", key, priority1[key]));
+}
+```
+
+Now, whenever you want to override the hard-coded defaults, simply update the `app.config` file's `AppSettings` section like:
+
+```xml
+<appSettings>
+  <add key="Operations" value="Create|Read|Update|Delete|Assign|Revoke|Enable|Disable|Expire|nexpire"/>
+  <add key="Code" value="A"/>
+  <add key="Enabled" value="false"/>
+  <add key="Max" value="999"/>
+  <add key="FirstDate" value="1988-08-08T12:34:00.000"/>
+  <add key="Secret1" value="From the 'appSettings' section."/>
+  <add key="SecondPriority" value="User=3;Group=2;Role=1"/>
+</appSettings>
+```
+
 #### Sensitive application settings
 For managing sensitive application settings, the code relies on the standard [`aspnet_regiis.exe`](https://blogs.msdn.microsoft.com/gaurav/2013/12/15/encrypting-section-of-config-file-using-aspnet_regiis-exe-the-configuration-for-physical-path-web-config-cannot-be-opened/) tool. The sample project comes with the modified version of the [`Crypt.config.bat`](https://github.com/alekdavis/Crypt.config.bat) script that takes care of the minutiae needed for the key creation and encryption. When you build the project, the post-build step will invoke the `Crypt.config.bat` file to create a key container and then encrypt a sensitive configuration section of the application configuration file in the output (`Debug` or `Release`) folder (notice that once the key container creation step successfully runs, it will keep failing because on repeated attempts it will try to create the container that already exists, so you can ignore this error). 
 

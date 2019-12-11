@@ -12,6 +12,7 @@
     <RepositoryType>Git</RepositoryType>
     <PackageTags>.NET, configuration, encrypt, decrypt, settings</PackageTags>
     <Company>Alek Davis</Company>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

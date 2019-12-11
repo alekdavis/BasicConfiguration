@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BasicAppSettings;
 
 namespace Sample
@@ -8,12 +9,6 @@ namespace Sample
     /// </summary>
     internal static class AppConfig
     {
-        internal static string Operations =
-            Config.GetValue<string>("Operations", "Create|Read|Update|Delete|Assign|Revoke|Enable|Disable");
-
-        internal static string Objects =
-            Config.GetValue<string>("Objects", "User|Group|Role");
-
         internal static char Code =
             Config.GetValue<char>("Code", 'C');
 
@@ -37,5 +32,17 @@ namespace Sample
 
         internal static DateTime LastDate =
             Config.GetValue<DateTime>("LastDate", DateTime.UtcNow);
+
+        internal static string[] Operations =
+            Config.GetArray("Operations", "Create|Read|Update|Delete|Assign|Revoke|Enable|Disable", true, "|");
+
+        internal static string[] Objects =
+            Config.GetArray("Objects", "User|Group|Role", true, "|");
+
+        internal static Dictionary<string, string> FirstPriority =
+            Config.GetDictionary("FirstPriority", "User=1;Group=2;Role=3");
+
+        internal static Dictionary<string, string> SecondPriority =
+            Config.GetDictionary("SecondPriority", "User=1;Group=2;Role=3");
     }
 }
