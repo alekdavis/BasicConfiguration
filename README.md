@@ -1,4 +1,4 @@
-# BasicAppSettings
+# BasicConfiguration
 This .NET project illustrates how to keep your application configuration files nice and clean. It also suggests a better way to initialize sensitive and non-sensitive application settings.
 
 ## Introduction
